@@ -1,3 +1,5 @@
+# --- INIZIO CODICE main.py ---
+
 import streamlit as st
 
 pages = [
@@ -10,3 +12,5 @@ pages = [
 pg = st.navigation(pages,position="hidden")
 
 pg.run()
+
+# --- FINE CODICE main.py ---
