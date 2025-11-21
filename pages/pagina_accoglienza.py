@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+import time
 
 # Importazione del nuovo modulo per l'archiviazione
 import data_storage
@@ -35,6 +36,7 @@ nl(1)
 def navigate_to_domanda_1():
     # Poiché il bottone è abilitato solo se 'email_valid' è True,
     # qui possiamo eseguire direttamente la navigazione.
+    time.sleep(0.5)
     st.switch_page("./pages/domanda_1.py")
 
 def validate_email():
