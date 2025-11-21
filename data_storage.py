@@ -1,3 +1,5 @@
+# --- INIZIO CODICE data_storage.py ---
+
 import json
 import os
 from datetime import datetime
@@ -80,3 +82,5 @@ def view_archive():
     """Stampa il contenuto dell'archivio."""
     data = load_data()
     print(json.dumps(data, indent=4))
+
+# --- FINE CODICE data_storage.py ---
