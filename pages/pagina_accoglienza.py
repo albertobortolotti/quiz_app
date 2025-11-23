@@ -37,9 +37,8 @@ switch_page = st.button("Inizia")
 if switch_page:
     # Switch to the selected page
     #page_file = "./pages/domanda_1.py"
-    page_file = "domanda_1"
-    
-    st.switch_page(page_file)
+    #page_file = "domanda_1"
+    st.switch_page("domanda_1")
 
 # results_placeholder = st.empty()
 
