@@ -50,8 +50,13 @@ st.write("""Rispondi a questo quiz per avere l'opportunità di vincere un regalo
 
 # choices = st.radio("Scegli una risposta:", ['c','d','a','pippo'], index = None)
 
+
+
 # Button to switch page
-switch_page = st.button("Inizia")
+switch_page = st.button(
+    "Inizia", 
+    on_click=reset_and_start # ✅ Chiama la funzione di reset al click
+)
 if switch_page:
     # Switch to the selected page
     page_file = "./pages/domanda_1.py"
