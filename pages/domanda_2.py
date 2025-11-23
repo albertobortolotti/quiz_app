@@ -23,14 +23,39 @@ def disable_choices():
 
 # define question dictionary
 
-quest_dict = {"header":"Domanda 2/5",
-              "question":"Qual è la prima lettera dell'alfabeto?",
-              "options":['a','b','c','d'],
-              "correct_answer":"a",
-              "explanation":"La a è la prima lettera dell'alfabeto",
+quest_dict = {
+              "question":"Quale di questi NON è un software Acus?",
+              "options":['Acusim','Aculink','Acucluster','Acuflow'],
+              "correct_answer":"Acucluster",
+              "explanation":'''*I software di Acus sono:*
+- *Acuphi*
+- *Acusim*
+- *Aculink*
+- *Acuflow*''',
               "score":10}
 
-header_placeholder = st.empty()
+css_code = f"""
+<style>
+    div[data-testid="stRadio"] label,
+    div[data-testid="stRadio"] p {{
+        font-size: 16px !important; /* Imposta la dimensione del font desiderata */
+    }}
+</style>
+"""
+
+st.markdown('''
+<style>
+[data-testid="stMarkdownContainer"] ul{
+    list-style-position: inside;
+}
+</style>
+''', unsafe_allow_html=True)
+
+# 3. Inietta il CSS nella pagina
+st.markdown(css_code, unsafe_allow_html=True)
+
+
+bar_placeholder = st.empty()
 question_placeholder = st.empty()
 options_placeholder = st.empty()
 results_placeholder = st.empty()
@@ -38,13 +63,18 @@ expander_area = st.empty()
 nl(1)
 button_placeholder = st.empty()
 
-header_placeholder.header(quest_dict["header"])
+bar_placeholder.progress(40, text='2 di 5')
 
 
 # Text Prompt
-question_placeholder.write(quest_dict["question"])
+# question_placeholder.write(quest_dict["question"])
+question = f'<p style="font-size: 32px;">{quest_dict["question"]}</p>'
+question_placeholder.write(
+    question, unsafe_allow_html=True
+                           )
 
-choices = options_placeholder.radio("Scegli una risposta:", quest_dict["options"], index = None, on_change=click_button, disabled= st.session_state.disable_choices_2)
+
+choices = options_placeholder.radio("Scegli una risposta:", quest_dict["options"], index = None, on_change=click_button, disabled= st.session_state.disable_choices_2, label_visibility='collapsed')
 
 check_button = button_placeholder.button("Check", disabled = st.session_state.clicked_2, on_click=disable_choices)
 
@@ -57,22 +87,31 @@ if st.session_state['button']:
 
     if choices == quest_dict["correct_answer"]:
         results_placeholder.success("CORRETTO")
+        # st.session_state['total_score'] = st.session_state['total_score'] + quest_dict["score"]
     else:
         results_placeholder.error("SBAGLIATO")
     # Explanation of the Answer
-    expander_area.write(f"*{quest_dict["explanation"]}*")
+    expander_area.write(f"{quest_dict["explanation"]}")
 
     switch_page = button_placeholder.button("Prossimo")
 
     if switch_page:
         # Switch to the selected page
-        page_file = "./pages/punteggio_finale.py"
+        page_file = "./pages/domanda_3.py"
         st.session_state['button'] = False
 
         if choices == quest_dict["correct_answer"]:
             st.session_state['total_score'] = st.session_state['total_score'] + quest_dict["score"]
 
         st.switch_page(page_file)
+
+
+
+
+
+
+
+
 
 
 
