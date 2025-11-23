@@ -6,9 +6,26 @@ def nl(num_of_lines):
     for i in range(num_of_lines):
         st.write(" ")
 
+def reset_and_start():
+    """Pulisce tutte le chiavi e imposta le chiavi iniziali."""
+    # 1. Pulisce lo stato (necessario per ricominciare)
+    keys_to_delete = list(st.session_state.keys())
+    for key in keys_to_delete:
+        del st.session_state[key]
+    
+    # 2. Imposta lo stato iniziale del quiz
+    st.session_state['total_score'] = 0
+    # Aggiungiamo una chiave sentinella che useremo in domanda_1.py
+    st.session_state['quiz_started'] = True 
+    
+    # 3. Passa alla prima domanda
+    # Usa "domanda_1" che è il nome del file senza .py e senza /pages/
+    st.switch_page("domanda_1")
+
+
 # Delete all the items in Session state
-for key in st.session_state.keys():
-    del st.session_state[key]
+# for key in st.session_state.keys():
+#    del st.session_state[key]
 
 if 'quiz_initialized' not in st.session_state:
     st.session_state['total_score'] = 0
