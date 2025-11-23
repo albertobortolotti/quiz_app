@@ -28,6 +28,28 @@ nl(1)
 # Text Prompt
 st.write("""Rispondi a questo quiz per avere l'opportunità di vincere un regalo!""")
 
+def validate_email():
+    email = st.session_state.email_input
+    # Inizializza o resetta lo stato di validazione
+    st.session_state['email_valid'] = False 
+
+    # Esegui la validazione
+    if email and '@' in email and '.' in email:
+        st.session_state['email_valid'] = True
+        st.session_state['email'] = email
+        
+        # Inizializza la sessione solo se non è già stata inizializzata
+        if 'session_id' not in st.session_state:
+            st.session_state['session_id'] = data_storage.initialize_session(email)
+    
+    # IMPORTANTE: NON CHIAMARE st.switch_page O st.rerun QUI!
+
+# Campo di input email: on_change chiama la validazione
+email_input = st.text_input(
+    "Inserisci la tua email per iniziare:", 
+    key="email_input", 
+    on_change=validate_email
+)
 
 
 # choices = st.radio("Scegli una risposta:", ['c','d','a','pippo'], index = None)
@@ -211,6 +233,7 @@ if switch_page:
 #         quiz_app()
 
 #         nl(1)
+
 
 
 
