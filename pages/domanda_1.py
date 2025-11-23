@@ -6,8 +6,8 @@ def nl(num_of_lines):
         st.write(" ")
 
 
-if 'total_score' not in st.session_state.keys():
-    st.switch_page("./pages/pagina_accoglienza.py")
+#if 'total_score' not in st.session_state.keys():
+#    st.switch_page("./pages/pagina_accoglienza.py")
 
 if 'clicked_1' not in st.session_state:
     st.session_state.clicked_1 = True
@@ -85,7 +85,8 @@ if st.session_state['button']:
 
     if switch_page:
         # Switch to the selected page
-        page_file = "./pages/domanda_2.py"
+        # page_file = "./pages/domanda_2.py"
+        page_file = "domanda_2"
         st.session_state['button'] = False
 
         if choices == quest_dict["correct_answer"]:
