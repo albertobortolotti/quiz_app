@@ -36,7 +36,9 @@ st.write("""Rispondi a questo quiz per avere l'opportunità di vincere un regalo
 switch_page = st.button("Inizia")
 if switch_page:
     # Switch to the selected page
-    page_file = "./pages/domanda_1.py"
+    #page_file = "./pages/domanda_1.py"
+    page_file = "./pages/domanda_1"
+    
     st.switch_page(page_file)
 
 # results_placeholder = st.empty()
