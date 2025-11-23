@@ -10,8 +10,9 @@ def nl(num_of_lines):
 for key in st.session_state.keys():
     del st.session_state[key]
 
-st.session_state['total_score'] = 0
-
+if 'quiz_initialized' not in st.session_state:
+    st.session_state['total_score'] = 0
+    st.session_state['quiz_initialized'] = True
 
 # Open the image from the specified path
 #image = Image.open(r"C:\Users\acus\PycharmProjects\Prova_GUI\images\Acus-logo-con-payoff-positivo.png""")
