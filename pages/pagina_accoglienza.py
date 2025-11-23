@@ -51,15 +51,29 @@ email_input = st.text_input(
     on_change=validate_email
 )
 
+# Bottone per cambiare pagina
+st.button(
+    "Inizia",
+    # Il bottone è DISABILITATO finché la validazione non ha successo
+    disabled=not st.session_state.get('email_valid', False),
+    on_click=navigate_to_domanda_1 # Usa il callback per la navigazione
+)
+
+# Messaggio di feedback
+if st.session_state.get('email_valid'):
+    st.success(f"Email registrata: {st.session_state['email']}")
+elif st.session_state.get('email_input'):
+    # Mostra l'errore solo se l'utente ha digitato qualcosa
+    st.error("Inserisci un'email valida.")
 
 # choices = st.radio("Scegli una risposta:", ['c','d','a','pippo'], index = None)
 
 # Button to switch page
-switch_page = st.button("Inizia")
-if switch_page:
+# switch_page = st.button("Inizia")
+# if switch_page:
     # Switch to the selected page
-    page_file = "./pages/domanda_1.py"
-    st.switch_page(page_file)
+#    page_file = "./pages/domanda_1.py"
+#    st.switch_page(page_file)
 
 # results_placeholder = st.empty()
 
@@ -233,6 +247,7 @@ if switch_page:
 #         quiz_app()
 
 #         nl(1)
+
 
 
 
