@@ -5,6 +5,11 @@ def nl(num_of_lines):
     for i in range(num_of_lines):
         st.write(" ")
 
+if 'quiz_started' not in st.session_state or st.session_state['quiz_started'] == False:
+    # Se non è stato avviato, torna alla pagina di accoglienza.
+    # Usiamo il nome completo per la pagina principale che è fuori da /pages
+    st.switch_page("pagina_accoglienza.py")
+
 
 # if 'total_score' not in st.session_state.keys():
 #    st.switch_page("./pages/pagina_accoglienza.py")
