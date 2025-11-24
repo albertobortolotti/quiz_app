@@ -4,11 +4,11 @@ message1_placeholder = st.empty()
 message2_placeholder = st.empty()
 
     # Invia l'email con i risultati
-#    success = send_results_email(
-#        user_email=st.session_state['user_email'],
-#        answers=st.session_state['answers'],
-#        score=st.session_state['total_score']
-#    )
+    success = send_results_email(
+        user_email=st.session_state['user_email'],
+        answers=st.session_state['answers'],
+        score=st.session_state['total_score']
+    )
 
 if st.session_state['total_score'] == 50:
     st.balloons()
@@ -36,5 +36,6 @@ Passa al nostro stand per ritirarlo.'''
 
     message1_placeholder.write(f'<p style="font-size: 20px;">{message1}</p>', unsafe_allow_html=True)
     message2_placeholder.write(f'<p style="font-size: 20px;">{message2}</p>', unsafe_allow_html=True)
+
 
 
