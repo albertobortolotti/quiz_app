@@ -1,4 +1,5 @@
 import streamlit as st
+from utils import send_results_email
 
 message1_placeholder = st.empty()
 message2_placeholder = st.empty()
@@ -39,6 +40,7 @@ Passa al nostro stand per ritirarlo.'''
 
     message1_placeholder.write(f'<p style="font-size: 20px;">{message1}</p>', unsafe_allow_html=True)
     message2_placeholder.write(f'<p style="font-size: 20px;">{message2}</p>', unsafe_allow_html=True)
+
 
 
 
